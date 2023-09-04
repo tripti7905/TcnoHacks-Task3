@@ -1,0 +1,13 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+class MyCalculator$1 extends WindowAdapter {
+   MyCalculator$1(MyCalculator var1) {
+      this.this$0 = var1;
+   }
+
+   public void windowClosing(WindowEvent var1) {
+      System.exit(0);
+   }
+}
