@@ -1,0 +1,42 @@
+// Source code is decompiled from a .class file using FernFlower decompiler.
+import java.awt.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+class MyMemoryButton extends Button implements ActionListener {
+   MyCalculator cl;
+
+   MyMemoryButton(int var1, int var2, int var3, int var4, String var5, MyCalculator var6) {
+      super(var5);
+      this.setBounds(var1, var2, var3, var4);
+      this.cl = var6;
+      this.cl.add(this);
+      this.addActionListener(this);
+   }
+
+   public void actionPerformed(ActionEvent var1) {
+      char var2 = ((MyMemoryButton)var1.getSource()).getLabel().charAt(1);
+      this.cl.setClear = true;
+      double var3 = Double.parseDouble(this.cl.displayLabel.getText());
+      switch (var2) {
+         case 'C':
+            this.cl.memLabel.setText(" ");
+            this.cl.memValue = 0.0;
+            break;
+         case 'R':
+            this.cl.displayLabel.setText(MyCalculator.getFormattedText(this.cl.memValue));
+            break;
+         case 'S':
+            this.cl.memValue = 0.0;
+         case '+':
+            MyCalculator var10000 = this.cl;
+            var10000.memValue += Double.parseDouble(this.cl.displayLabel.getText());
+            if (!this.cl.displayLabel.getText().equals("0") && !this.cl.displayLabel.getText().equals("0.0")) {
+               this.cl.memLabel.setText("M");
+            } else {
+               this.cl.memLabel.setText(" ");
+            }
+      }
+
+   }
+}
